@@ -70,7 +70,7 @@ automatically.
 * `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
 if you wanted to pass a few extra options to PHPUnit, you could append them to the end of your `dockunit` command.
 
-You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?
+__*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
 
 ## License
 
