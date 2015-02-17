@@ -19,4 +19,52 @@ Dockunit you don't need to do this anymore.
 
 ## Installation
 
-Install via npm
+1. Make sure you have [NodeJS](http://nodejs.org/), [Docker](https://www.docker.com/), and [npm](https://www.npmjs.com/) install
+1. Install via npm:
+
+  ```bash
+  npm install -g dockunit
+  ```
+
+## Usage
+
+Dockunit relies on `Dockunit.json` files. Each of your projects should have their own `Dockunit.json` file.
+`Dockunit.json` defines what test commands should be run on what type of containers for any given project. Here is an
+example `Dockunit.json`:
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "PHP 5.2 on Ubuntu",
+      "image": "tlovett1/php-5.2-phpunit-3.5",
+      "beforeScripts": [],
+      "testCommand": "phpunit"
+    },
+    {
+      "prettyName": "PHP 5.3 on Windows 8",
+      "image": "tlovett1/php-5.3-windows-8",
+      "beforeScripts": [],
+      "testCommand": "phpunit"
+    }
+  ]
+}
+```
+
+The Dockunit command is:
+
+```bash
+dockunit <path-to-project> [--du-verbose] ...
+``
+
+* `<path-to-project>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
+automatically.
+* `[--du-verbose]` (optional) - This will print out verbose Dockunit output.
+* `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
+if you wanted to pass a few extra options to PHPUnit, you could append them to the end of your `dockunit` command.
+
+## License
+
+Dockunit is free software; you can redistribute it and/or modify it under the terms of the [GNU General
+Public License](http://www.gnu.org/licenses/gpl-2.0.html) as published by the Free Software Foundation; either version
+2 of the License, or (at your option) any later version.
