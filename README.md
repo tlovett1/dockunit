@@ -51,6 +51,13 @@ example `Dockunit.json`:
 }
 ```
 
+`containers` contains an array of container objects. Each container object can contain the following properties:
+
+* `prettyName` (required) - This is used in output to help you identify your container.
+* `image` (required) - This is a valid Docker container image located in the [Docker registry](https://registry.hub.docker.com/).
+* `beforeScripts` (optional) - This is a string array of bash scripts to be run in order.
+* `testCommand` (required) - This is the actual test command to be run on each container i.e. phpunit or qunit.
+
 The Dockunit command is:
 
 ```bash
@@ -62,6 +69,8 @@ automatically.
 * `[--du-verbose]` (optional) - This will print out verbose Dockunit output.
 * `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
 if you wanted to pass a few extra options to PHPUnit, you could append them to the end of your `dockunit` command.
+
+You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?
 
 ## License
 
