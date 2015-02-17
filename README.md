@@ -61,8 +61,10 @@ example `Dockunit.json`:
 The Dockunit command is:
 
 ```bash
-dockunit <path-to-project> [--du-verbose] ...
+sudo dockunit <path-to-project> [--du-verbose] ...
 ```
+
+_Note:_ `sudo` is usually required since Dockunit runs Docker commands which require special permissions.
 
 * `<path-to-project>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
 automatically.
@@ -70,7 +72,7 @@ automatically.
 * `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
 if you wanted to pass a few extra options to PHPUnit, you could append them to the end of your `dockunit` command.
 
-__*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
+__*You can simply run `sudo dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
 
 ## License
 
