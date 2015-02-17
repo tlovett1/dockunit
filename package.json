@@ -1,0 +1,27 @@
+{
+  "name": "dockunit",
+  "version": "0.1.0",
+  "description": "Containerized language agnostic unit testing.",
+  "main": "./lib/command.js",
+  "bin": {
+    "dockunit": "./bin/dockunit"
+  },
+  "author": "Taylor Lovett (http://taylorlovett.com)",
+  "license": "GPLv2+",
+  "dependencies": {
+    "minimist": "^1.1.0"
+  },
+  "keywords": [
+	"docker",
+	"phpunit",
+	"qunit",
+	"tests"
+  ],
+  "engines": {
+    "node": "*"
+  },
+  "repository": {
+	"type": "git",
+	"url": "git://github.com/tlovett1/dockunit.git"
+  }
+}
