@@ -1,7 +1,7 @@
 Dockunit
 ==========
 
-Run containerized language agnostic unit tests.
+Containerized unit testing across any platform and programming language.
 
 ## Purpose
 
