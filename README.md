@@ -62,7 +62,7 @@ The Dockunit command is:
 
 ```bash
 dockunit <path-to-project> [--du-verbose] ...
-``
+```
 
 * `<path-to-project>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
 automatically.
