@@ -74,6 +74,29 @@ if you wanted to pass a few extra options to PHPUnit, you could append them to t
 
 __*You can simply run `sudo dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
 
+### Dockunit and WordPress
+
+Dockunit and WordPress work well together. WordPress is backwards compatibe with PHP 5.2. It's very difficult to test
+applications on PHP 5.2 without some sort of containerized workflow. Here is a example `Dockunit.json` file that you
+can use to test your WordPress themes and plugins in PHP 5.2 from within the [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV) development environment:
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "PHP 5.2",
+      "image": "tlovett1/php-5.2-phpunit-3.5",
+      "beforeScripts": [
+        "bash bin/install-wp-tests.sh wordpress_test external external 192.168.50.4 4.1"
+      ],
+      "testCommand": "phpunit"
+    }
+  ]
+}
+```
+
+[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) is a valid Docker image availabe for use in `Dockerfile.json`.
+
 ## License
 
 Dockunit is free software; you can redistribute it and/or modify it under the terms of the [GNU General
