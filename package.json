@@ -15,6 +15,7 @@
 	"docker",
 	"phpunit",
 	"qunit",
+	"unit testing",
 	"tests"
   ],
   "engines": {
