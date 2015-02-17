@@ -61,12 +61,12 @@ example `Dockunit.json`:
 The Dockunit command is:
 
 ```bash
-sudo dockunit <path-to-project> [--du-verbose] ...
+sudo dockunit <path-to-project-directory> [--du-verbose] ...
 ```
 
 _Note:_ `sudo` is usually required since Dockunit runs Docker commands which require special permissions.
 
-* `<path-to-project>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
+* `<path-to-project-directory>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
 automatically.
 * `[--du-verbose]` (optional) - This will print out verbose Dockunit output.
 * `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
