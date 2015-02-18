@@ -1,6 +1,6 @@
 {
   "name": "dockunit",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Containerized unit testing across any platform and programming language",
   "main": "./lib/command.js",
   "bin": {
@@ -16,6 +16,9 @@
 	"phpunit",
 	"qunit",
 	"unit testing",
+	"docker unit test",
+	"continuous integration",
+	"travis ci",
 	"tests"
   ],
   "engines": {
