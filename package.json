@@ -9,23 +9,24 @@
   "author": "Taylor Lovett (http://taylorlovett.com)",
   "license": "GPLv2+",
   "dependencies": {
+    "colors": "^1.0.3",
     "minimist": "^1.1.0"
   },
   "keywords": [
-	"docker",
-	"phpunit",
-	"qunit",
-	"unit testing",
-	"docker unit test",
-	"continuous integration",
-	"travis ci",
-	"tests"
+    "docker",
+    "phpunit",
+    "qunit",
+    "unit testing",
+    "docker unit test",
+    "continuous integration",
+    "travis ci",
+    "tests"
   ],
   "engines": {
     "node": "*"
   },
   "repository": {
-	"type": "git",
-	"url": "git://github.com/tlovett1/dockunit.git"
+    "type": "git",
+    "url": "git://github.com/tlovett1/dockunit.git"
   }
 }
