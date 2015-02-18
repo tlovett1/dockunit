@@ -86,7 +86,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
 {
   "containers": [
     {
-      "prettyName": "PHP 5.2",
+      "prettyName": "PHP 5.2 FPM WordPress 4.1",
       "image": "tlovett1/php-5.2-phpunit-3.5",
       "beforeScripts": [
         "bash bin/install-wp-tests.sh wordpress_test external external 192.168.50.4 4.1"
@@ -94,10 +94,18 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.5",
+      "prettyName": "PHP 5.5 FPM WordPress 4.0",
       "image": "tlovett1/php-fpm-phpunit-wp",
       "beforeScripts": [
-        "bash bin/install-wp-tests.sh wordpress_test2 external external 192.168.50.4 4.1"
+        "bash bin/install-wp-tests.sh wordpress_test2 external external 192.168.50.4 4.0"
+      ],
+      "testCommand": "phpunit"
+    },
+    {
+      "prettyName": "PHP 5.5 for Apache WordPress 3.9",
+      "image": "tlovett1/php-apache-phpunit-wp",
+      "beforeScripts": [
+        "bash bin/install-wp-tests.sh wordpress_test3 external external 192.168.50.4 3.9"
       ],
       "testCommand": "phpunit"
     }
