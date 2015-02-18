@@ -97,7 +97,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
       "prettyName": "PHP 5.5",
       "image": "tlovett1/php-fpm-phpunit-wp",
       "beforeScripts": [
-        "bash bin/install-wp-tests.sh wordpress_testhey external external 192.168.50.4 4.1"
+        "bash bin/install-wp-tests.sh wordpress_test2 external external 192.168.50.4 4.1"
       ],
       "testCommand": "phpunit"
     }
