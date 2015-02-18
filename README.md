@@ -92,12 +92,20 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
         "bash bin/install-wp-tests.sh wordpress_test external external 192.168.50.4 4.1"
       ],
       "testCommand": "phpunit"
+    },
+    {
+      "prettyName": "PHP 5.5",
+      "image": "tlovett1/php-fpm-phpunit-wp",
+      "beforeScripts": [
+        "bash bin/install-wp-tests.sh wordpress_testhey external external 192.168.50.4 4.1"
+      ],
+      "testCommand": "phpunit"
     }
   ]
 }
 ```
 
-[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) is a valid Docker image availabe for use in `Dockerfile.json`.
+[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) and [tlovett1/php-fpm-phpunit-wp](https://registry.hub.docker.com/u/tlovett1/php-fpm-phpunit-wp/) are valid Docker images available for use in `Dockerfile.json`.
 
 ## License
 
