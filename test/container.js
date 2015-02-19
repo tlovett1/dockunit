@@ -9,7 +9,6 @@ var mySpawn = mockSpawn();
  *
  * @type {container|exports.container}
  */
-var Container = require('../lib/container').container;
 var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn } }).container;
 
 /**
