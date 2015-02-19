@@ -80,7 +80,7 @@ __*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Doc
 
 Dockunit and WordPress work well together. WordPress is backwards compatible with PHP 5.2. It's very difficult to test
 applications on PHP 5.2 without some sort of containerized workflow. Here is an example `Dockunit.json` file that you
-can use to test your WordPress themes and plugins in PHP 5.2:
+can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
 
 ```javascript
 {
