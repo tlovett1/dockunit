@@ -37,13 +37,13 @@ example `Dockunit.json`:
   "containers": [
     {
       "prettyName": "PHP 5.2 on Ubuntu",
-      "image": "tlovett1/php-5.2-phpunit-3.5",
+      "image": "user/my-php-image",
       "beforeScripts": [],
       "testCommand": "phpunit"
     },
     {
       "prettyName": "PHP 5.5 FPM on Ubuntu",
-      "image": "tlovett1/php-fpm-phpunit-wp",
+      "image": "user/my-php-image2",
       "beforeScripts": [],
       "testCommand": "phpunit"
     }
@@ -61,10 +61,10 @@ example `Dockunit.json`:
 The Dockunit command is:
 
 ```bash
-sudo dockunit <path-to-project-directory> [--du-verbose] [--help] [--version] ...
+dockunit <path-to-project-directory> [--du-verbose] [--help] [--version] ...
 ```
 
-_Note:_ `sudo` is usually required since Dockunit runs Docker commands which require special permissions.
+_Note:_ `sudo` is usually required when run within a Linux distribution since Dockunit runs Docker commands which require special permissions.
 
 * `<path-to-project-directory>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
 automatically.
@@ -74,7 +74,7 @@ automatically.
 * `...` - Any additional arguments and options passed to the command will be passed to your test command. For example,
 if you wanted to pass a few extra options to PHPUnit, you could append them to the end of your `dockunit` command.
 
-__*You can simply run `sudo dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
+__*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit. Simple huh?*__
 
 ### Dockunit and WordPress
 
@@ -89,7 +89,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
       "prettyName": "PHP 5.2 FPM WordPress 4.1",
       "image": "tlovett1/php-5.2-phpunit-3.5",
       "beforeScripts": [
-        "bash bin/install-wp-tests.sh wordpress_test external external 192.168.50.4 4.1"
+        "service mysql start",
+        "bash bin/install-wp-tests.sh wordpress_test root '' localhost 4.1"
       ],
       "testCommand": "phpunit"
     },
@@ -97,7 +98,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
       "prettyName": "PHP 5.5 FPM WordPress 4.0",
       "image": "tlovett1/php-fpm-phpunit-wp",
       "beforeScripts": [
-        "bash bin/install-wp-tests.sh wordpress_test2 external external 192.168.50.4 4.0"
+        "service mysql start",
+        "bash bin/install-wp-tests.sh wordpress_test2 root '' localhost 4.0"
       ],
       "testCommand": "phpunit"
     },
@@ -105,7 +107,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 from within the [VV
       "prettyName": "PHP 5.5 for Apache WordPress 3.9",
       "image": "tlovett1/php-apache-phpunit-wp",
       "beforeScripts": [
-        "bash bin/install-wp-tests.sh wordpress_test3 external external 192.168.50.4 3.9"
+        "service mysql start",
+        "bash bin/install-wp-tests.sh wordpress_test3 root '' localhost 3.9"
       ],
       "testCommand": "phpunit"
     }
