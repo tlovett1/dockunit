@@ -209,4 +209,45 @@ describe('container', function() {
 			var child = container.removeContainer({}, 'e534rwdfs', function() { });
 		});
 	});
+
+	describe('#runBeforeScript()', function() {
+
+		/**
+		 * Test a simple successful before script
+		 */
+		it('Test successful before script', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(0));
+
+			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
+				done();
+			});
+		});
+
+		/**
+		 * Test a simple unsuccessful before script
+		 */
+		it('Test unsuccessful before script', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(1));
+
+			process.exit = function(code) {
+				if (1 === code) {
+					done();
+				}
+			};
+
+			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() { });
+		});
+	});
 });
