@@ -24,6 +24,13 @@ global.config = {
 	version: false
 };
 
+/**
+ * Mock test arguments
+ *
+ * @type {{}}
+ */
+global.testArgs = {};
+
 var oldExit = process.exit;
 
 describe('container', function() {
@@ -248,6 +255,64 @@ describe('container', function() {
 			};
 
 			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() { });
+		});
+	});
+
+	describe('#runTests()', function() {
+
+		/**
+		 * Test a simple passed tests
+		 */
+		it('Test passed tests', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(0));
+
+			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
+				done();
+			});
+		});
+
+		/**
+		 * Test a simple failed tests
+		 */
+		it('Test failed tests', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(0));
+
+			var child = container.runTests({}, 'e534rwdfs', function() {
+				done();
+			});
+		});
+
+		/**
+		 * Test a simple test error
+		 */
+		it('Test test error', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(255));
+
+			process.exit = function(code) {
+				if (code > 1) {
+					done();
+				}
+			};
+
+			var child = container.runTests({}, 'e534rwdfs', function() { });
 		});
 	});
 });
