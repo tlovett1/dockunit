@@ -1,0 +1,9 @@
+{
+	"containers": [
+		{
+			"prettyName": "PHP-FPM 5.2",
+			"image": "tlovett1/php-5.2-phpunit-3.5",
+			"testCommand": "phpunit"
+		}
+	]
+}
