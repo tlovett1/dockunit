@@ -13,13 +13,13 @@ Dockunit you don't need to do this anymore.
 
 ## Requirements
 
-* [NodeJS](http://nodejs.org/)
+* [Node.js](http://nodejs.org/)
 * [npm](https://www.npmjs.com/)
 * [Docker](https://www.docker.com/)
 
 ## Installation
 
-1. Make sure you have [NodeJS](http://nodejs.org/), [Docker](https://www.docker.com/), and [npm](https://www.npmjs.com/) install
+1. Make sure you have [Node.js](http://nodejs.org/), [Docker](https://www.docker.com/), and [npm](https://www.npmjs.com/) install
 1. Install via npm:
 
   ```bash
