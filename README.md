@@ -42,8 +42,8 @@ example `Dockunit.json`:
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.3 on Windows 8",
-      "image": "tlovett1/php-5.3-windows-8",
+      "prettyName": "PHP 5.5 FPM on Ubuntu",
+      "image": "tlovett1/php-fpm-phpunit-wp",
       "beforeScripts": [],
       "testCommand": "phpunit"
     }
