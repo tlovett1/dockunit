@@ -1,4 +1,4 @@
-Dockunit
+Dockunit [![Build Status](https://travis-ci.org/tlovett1/dockunit.svg?branch=master)](https://travis-ci.org/tlovett1/dockunit)
 ==========
 
 Containerized unit testing across any platform and programming language.
