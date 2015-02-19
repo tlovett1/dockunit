@@ -20,7 +20,8 @@
     "docker unit test",
     "continuous integration",
     "travis ci",
-    "tests"
+    "tests",
+    "integration tests"
   ],
   "engines": {
     "node": "*"
