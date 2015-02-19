@@ -127,4 +127,86 @@ describe('container', function() {
 			var child = container.startAndMountContainer({}, function() { });
 		});
 	});
+
+	describe('#stopContainer()', function() {
+
+		/**
+		 * Test a simple successful Docker container stop
+		 */
+		it('Test successful Docker container stop', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(0));
+
+			var child = container.stopContainer({}, 'e534rwdfs', function() {
+				done();
+			});
+		});
+
+		/**
+		 * Test a simple successful Docker container stop
+		 */
+		it('Test successful Docker container stop', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(1));
+
+			process.exit = function(code) {
+				if (1 === code) {
+					done();
+				}
+			};
+
+			var child = container.stopContainer({}, 'e534rwdfs', function() { });
+		});
+	});
+
+	describe('#removeContainer()', function() {
+
+		/**
+		 * Test a simple successful Docker container remove
+		 */
+		it('Test successful Docker container remove', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(0));
+
+			var child = container.removeContainer({}, 'e534rwdfs', function() {
+				done();
+			});
+		});
+
+		/**
+		 * Test a simple successful Docker container remove
+		 */
+		it('Test successful Docker container remove', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
+
+			process.exit = oldExit;
+
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(1));
+
+			process.exit = function(code) {
+				if (1 === code) {
+					done();
+				}
+			};
+
+			var child = container.removeContainer({}, 'e534rwdfs', function() { });
+		});
+	});
 });
