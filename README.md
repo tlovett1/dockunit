@@ -78,8 +78,8 @@ __*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Doc
 
 ## Dockunit.json Examples
 
-Each of your projects should have a `Dockunit.json` file in the project root. You can define your containers to fit
-your application needs. Here a few example `Dockunit.json` files for a variety of different programming languages and
+Each of your projects should have a `Dockunit.json` file in the project root. You should define your containers to fit
+your application's unique needs. Here's a few example `Dockunit.json` files for a variety of different programming languages and
 environments.
 
 ### PHP and WordPress
