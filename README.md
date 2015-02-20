@@ -156,7 +156,7 @@ an application in Node.js 0.10.x and 0.12.0 using [mocha](http://mochajs.org/):
 
 ### Python
 
-Dockunit works great with Python. This Dockunit.json file tests in Python 2.7.9 and the latest Python version using [nose](https://nose.readthedocs.org/en/latest/):
+Dockunit works great with Python. This `Dockunit.json` file tests in Python 2.7.9 and the latest Python version using [nose](https://nose.readthedocs.org/en/latest/):
 
 ```javascript
 {
