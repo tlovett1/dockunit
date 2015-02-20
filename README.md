@@ -1,4 +1,4 @@
-Dockunit [![Build Status](https://travis-ci.org/tlovett1/dockunit.svg?branch=master)](https://travis-ci.org/tlovett1/dockunit)
+Dockunit [![Build Status](https://travis-ci.org/tlovett1/dockunit.svg?branch=master)](https://travis-ci.org/tlovett1/dockunit) [![Coverage Status](https://coveralls.io/repos/tlovett1/dockunit/badge.svg?branch=master)](https://coveralls.io/r/tlovett1/dockunit?branch=master)
 ==========
 
 Containerized unit testing across any platform and programming language.
