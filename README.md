@@ -13,6 +13,7 @@ Dockunit you don't need to do this anymore.
 
 ## Requirements
 
+* OSX or a Linux Distribution (Windows not yet tested or officially supported)
 * [Node.js](http://nodejs.org/)
 * [npm](https://www.npmjs.com/)
 * [Docker](https://www.docker.com/)
