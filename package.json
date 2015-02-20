@@ -1,6 +1,6 @@
 {
   "name": "dockunit",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Containerized unit testing across any platform and programming language",
   "main": "./lib/command.js",
   "bin": {
@@ -15,10 +15,10 @@
   "keywords": [
     "docker",
     "phpunit",
-    "php testing",
-    "python testing",
-    "node testing",
-    "ruby testing",
+    "php unit testing",
+    "python unit testing",
+    "node unit testing",
+    "ruby unit testing",
     "qunit",
     "php unit testing",
     "unit testing",
