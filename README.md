@@ -118,6 +118,33 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
 
 [tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) and [tlovett1/php-fpm-phpunit-wp](https://registry.hub.docker.com/u/tlovett1/php-fpm-phpunit-wp/) are valid Docker images available for use in `Dockerfile.json`.
 
+### Dockunit and Node.js
+It is super easy to test your Node.js applications with Dockunit. Here is a simple `Dockunit.json` file that tests
+an application in Node.js 0.10.x and 0.12.0 using [mocha](http://mochajs.org/):
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "Node 0.10.x",
+      "image": "google/nodejs:latest",
+      "beforeScripts": [
+        "npm install -g mocha"
+      ],
+      "testCommand": "mocha"
+    },
+    {
+      "prettyName": "Node 0.12",
+      "image": "tlovett1/nodejs:0.12",
+      "beforeScripts": [
+        "npm install -g mocha"
+      ],
+      "testCommand": "mocha"
+    }
+  ]
+}
+```
+
 ## License
 
 Dockunit is free software; you can redistribute it and/or modify it under the terms of the [GNU General
