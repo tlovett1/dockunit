@@ -76,7 +76,13 @@ if you wanted to pass a few extra options to PHPUnit, you could append them to t
 
 __*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Dockunit.*__
 
-### Dockunit and WordPress
+## Dockunit.json Examples
+
+Each of your projects should have a `Dockunit.json` file in the project root. You can define your containers to fit
+your application needs. Here a few example `Dockunit.json` files for a variety of different programming languages and
+environments.
+
+### PHP and WordPress
 
 Dockunit and WordPress work well together. WordPress is backwards compatible with PHP 5.2. It's very difficult to test
 applications on PHP 5.2 without some sort of containerized workflow. Here is an example `Dockunit.json` file that you
@@ -116,9 +122,10 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
 }
 ```
 
-[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) and [tlovett1/php-fpm-phpunit-wp](https://registry.hub.docker.com/u/tlovett1/php-fpm-phpunit-wp/) are valid Docker images available for use in `Dockerfile.json`.
+[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) and [tlovett1/php-fpm-phpunit-wp](https://registry.hub.docker.com/u/tlovett1/php-fpm-phpunit-wp/) are valid Docker images available for use in any `Dockerfile.json`.
 
-### Dockunit and Node.js
+### Node.js
+
 It is super easy to test your Node.js applications with Dockunit. Here is a simple `Dockunit.json` file that tests
 an application in Node.js 0.10.x and 0.12.0 using [mocha](http://mochajs.org/):
 
@@ -144,6 +151,37 @@ an application in Node.js 0.10.x and 0.12.0 using [mocha](http://mochajs.org/):
   ]
 }
 ```
+
+[google/nodejs](https://registry.hub.docker.com/u/google/nodejs/) is a valid Docker image available for use in any `Dockerfile.json`.
+
+### Python
+
+Dockunit works great with Python. This Dockunit.json file tests in Python 2.7.9 and the latest Python version:
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "Python 2.7.9",
+      "image": "python:2.7.9",
+      "beforeScripts": [
+        "easy_install nose"
+      ],
+      "testCommand": "nosetests test"
+    },
+    {
+      "prettyName": "Python Latest",
+      "image": "python:latest",
+      "beforeScripts": [
+        "easy_install nose"
+      ],
+      "testCommand": "nosetests tests"
+    }
+  ]
+}
+```
+
+[python](https://registry.hub.docker.com/u/python/) is a valid Docker image available for use in any `Dockerfile.json`.
 
 ## License
 
