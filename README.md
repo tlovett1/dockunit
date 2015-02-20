@@ -181,7 +181,7 @@ Dockunit works great with Python. This Dockunit.json file tests in Python 2.7.9 
 }
 ```
 
-[python](https://registry.hub.docker.com/u/python/) is a valid Docker image available for use in any `Dockerfile.json`.
+[python](https://registry.hub.docker.com/_/python/) is a valid Docker image available for use in any `Dockerfile.json`.
 
 ## License
 
