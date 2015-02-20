@@ -1,6 +1,9 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var assert = require('assert');
 var mockSpawn = require('mock-spawn');
+var command = require('../lib/command');
 
 var mySpawn = mockSpawn();
 
@@ -13,22 +16,8 @@ var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn
 
 /**
  * Mock config
- *
- * @type {{path: String, verbose: boolean, help: boolean, version: boolean}}
  */
-global.config = {
-	path: process.cwd(),
-	verbose: true,
-	help: false,
-	version: false
-};
-
-/**
- * Mock test arguments
- *
- * @type {{}}
- */
-global.testArgs = {};
+command.setGlobals();
 
 var oldExit = process.exit;
 

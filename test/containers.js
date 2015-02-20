@@ -1,33 +1,20 @@
+'use strict';
+
 var proxyquire = require('proxyquire');
 var assert = require('assert');
+var command = require('../lib/command');
 
 var mockContainer = function() { };
 
 /**
- * Mock the spawn dependency
- *
- * @type {container|exports.container}
+ * Mock the Container object
  */
 var Containers = proxyquire('../lib/containers', { './container': { container: mockContainer } }).containers;
 
 /**
  * Mock config
- *
- * @type {{path: String, verbose: boolean, help: boolean, version: boolean}}
  */
-global.config = {
-	path: process.cwd(),
-	verbose: true,
-	help: false,
-	version: false
-};
-
-/**
- * Mock test arguments
- *
- * @type {{}}
- */
-global.testArgs = {};
+command.setGlobals();
 
 var oldExit = process.exit;
 
