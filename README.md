@@ -182,7 +182,35 @@ Dockunit works great with Python. This `Dockunit.json` file tests in Python 2.7.
 }
 ```
 
-[python](https://registry.hub.docker.com/_/python/) is a valid Docker image available for use in any `Dockerfile.json`.
+### Ruby
+
+You can use Dockunit to test your Ruby scripts. This `Dockunit.json` file tests a project in Ruby 2.1 and the latest
+stable Ruby version using [test-unit](https://rubygems.org/gems/test-unit):
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "Latest version of Ruby",
+      "image": "ruby:latest",
+      "beforeScripts": [
+        "bundle install"
+      ],
+      "testCommand": "bundle exec rake test"
+    },
+    {
+      "prettyName": "Ruby version 2.1",
+      "image": "ruby:2.1",
+      "beforeScripts": [
+        "bundle install"
+      ],
+      "testCommand": "bundle exec rake test"
+    }
+  ]
+}
+```
+
+[ruby](https://registry.hub.docker.com/_/ruby/) is a valid Docker image available for use in any `Dockerfile.json`.
 
 ## License
 
