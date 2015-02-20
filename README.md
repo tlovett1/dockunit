@@ -167,7 +167,7 @@ Dockunit works great with Python. This `Dockunit.json` file tests in Python 2.7.
       "beforeScripts": [
         "easy_install nose"
       ],
-      "testCommand": "nosetests test"
+      "testCommand": "nosetests tests"
     },
     {
       "prettyName": "Python Latest",
