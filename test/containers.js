@@ -66,6 +66,46 @@ describe('containers', function() {
 			});
 		});
 
+		/**
+		 * Run one container only
+		 */
+		it('Run specific container', function(done) {
+			var json = require('./json/multiple-1.json');
+
+			var containers = new Containers(json.containers);
+
+			mockContainer.prototype.run = function(finishedCallback) {
+				finishedCallback(0);
+			};
+
+			containers.run(function(returnCodes) {
+				assert.equal(returnCodes.length, 1);
+				assert.equal(returnCodes.join(''), '0');
+
+				done();
+			}, 1);
+		});
+
+		/**
+		 * Run first container only
+		 */
+		it('Run first container', function(done) {
+			var json = require('./json/multiple-1.json');
+
+			var containers = new Containers(json.containers);
+
+			mockContainer.prototype.run = function(finishedCallback) {
+				finishedCallback(0);
+			};
+
+			containers.run(function(returnCodes) {
+				assert.equal(returnCodes.length, 1);
+				assert.equal(returnCodes.join(''), '0');
+
+				done();
+			}, 0);
+		});
+
 	});
 
 });

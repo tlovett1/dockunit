@@ -30,6 +30,7 @@ describe('command', function() {
 			assert.equal(global.config.path, process.cwd());
 			assert.equal(global.config.verbose, false);
 			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
 			assert.equal(Object.keys(global.testArgs).length, 1);
 		});
 
@@ -48,6 +49,7 @@ describe('command', function() {
 			assert.equal(global.config.path, 'path');
 			assert.equal(global.config.verbose, false);
 			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
 			assert.equal(Object.keys(global.testArgs).length, 1);
 			assert.equal(global.testArgs._.length, 0);
 		});
@@ -68,6 +70,7 @@ describe('command', function() {
 			assert.equal(global.config.path, process.cwd());
 			assert.equal(global.config.verbose, true);
 			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
 			assert.equal(Object.keys(global.testArgs).length, 1);
 			assert.equal(global.testArgs._.length, 0);
 		});
@@ -88,6 +91,76 @@ describe('command', function() {
 			assert.equal(global.config.path, process.cwd());
 			assert.equal(global.config.verbose, false);
 			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
+			assert.equal(Object.keys(global.testArgs).length, 2);
+			assert.equal(global.testArgs.special, 'test');
+			assert.equal(global.testArgs._.length, 0);
+		});
+
+		/**
+		 * Test running a specific container with the --du-container option
+		 */
+		it('Test good container option', function() {
+			Command.setGlobals();
+
+			var argv = {
+				_: [],
+				special: 'test',
+				'du-container': 2
+			};
+
+			Command.processArgs(argv);
+
+			assert.equal(global.config.path, process.cwd());
+			assert.equal(global.config.verbose, false);
+			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, 2);
+			assert.equal(Object.keys(global.testArgs).length, 2);
+			assert.equal(global.testArgs.special, 'test');
+			assert.equal(global.testArgs._.length, 0);
+		});
+
+		/**
+		 * Test 0 as container option
+		 */
+		it('Test 0 as container option', function() {
+			Command.setGlobals();
+
+			var argv = {
+				_: [],
+				special: 'test',
+				'du-container': 0
+			};
+
+			Command.processArgs(argv);
+
+			assert.equal(global.config.path, process.cwd());
+			assert.equal(global.config.verbose, false);
+			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, 0);
+			assert.equal(Object.keys(global.testArgs).length, 2);
+			assert.equal(global.testArgs.special, 'test');
+			assert.equal(global.testArgs._.length, 0);
+		});
+
+		/**
+		 * Test a bad container option value
+		 */
+		it('Test bad container option', function() {
+			Command.setGlobals();
+
+			var argv = {
+				_: [],
+				special: 'test',
+				'du-container': 'sdfsdf'
+			};
+
+			Command.processArgs(argv);
+
+			assert.equal(global.config.path, process.cwd());
+			assert.equal(global.config.verbose, false);
+			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
 			assert.equal(Object.keys(global.testArgs).length, 2);
 			assert.equal(global.testArgs.special, 'test');
 			assert.equal(global.testArgs._.length, 0);
@@ -111,6 +184,7 @@ describe('command', function() {
 			assert.equal(global.config.path, 'path');
 			assert.equal(global.config.verbose, true);
 			assert.equal(global.config.help, false);
+			assert.equal(global.config.container, false);
 			assert.equal(Object.keys(global.testArgs).length, 3);
 			assert.equal(global.testArgs.special, 'test');
 			assert.equal(global.testArgs.special2, true);
