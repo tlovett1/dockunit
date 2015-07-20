@@ -1,6 +1,6 @@
 {
   "name": "dockunit",
-  "version": "0.3.6",
+  "version": "0.3.8",
   "description": "Containerized unit testing across any platform and programming language",
   "main": "./lib/command.js",
   "bin": {
