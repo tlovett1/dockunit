@@ -1,4 +1,4 @@
-Dockunit [![Build Status](https://travis-ci.org/tlovett1/dockunit.svg?branch=master)](https://travis-ci.org/tlovett1/dockunit) [![Coverage Status](https://coveralls.io/repos/tlovett1/dockunit/badge.svg?branch=master)](https://coveralls.io/r/tlovett1/dockunit?branch=master)
+Dockunit [![Build Status](https://travis-ci.org/dockunit/dockunit.svg?branch=master)](https://travis-ci.org/dockunit/dockunit)
 ==========
 
 Containerized unit testing across any platform and programming language.
@@ -43,7 +43,7 @@ example `Dockunit.json`:
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.5 FPM on Ubuntu",
+      "prettyName": "PHP 5.6 FPM on Ubuntu",
       "image": "user/my-php-image2",
       "beforeScripts": [],
       "testCommand": "phpunit"
@@ -88,14 +88,14 @@ environments.
 
 Dockunit and WordPress work well together. WordPress is backwards compatible with PHP 5.2. It's very difficult to test
 applications on PHP 5.2 without some sort of containerized workflow. Here is an example `Dockunit.json` file that you
-can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
+can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
 
 ```javascript
 {
   "containers": [
     {
       "prettyName": "PHP 5.2 FPM WordPress 4.1",
-      "image": "tlovett1/php-5.2-phpunit-3.5",
+      "image": "dockunit/php-fpm-mysql-phpunit:5.2",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test root '' localhost 4.1"
@@ -103,8 +103,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.5 FPM WordPress 4.0",
-      "image": "tlovett1/php-fpm-phpunit-wp",
+      "prettyName": "PHP 5.6 FPM WordPress 4.0",
+      "image": "dockunit/php-fpm-mysql-phpunit:5.6",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test2 root '' localhost 4.0"
@@ -112,8 +112,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.5 for Apache WordPress 3.9",
-      "image": "tlovett1/php-apache-phpunit-wp",
+      "prettyName": "PHP 5.6 for Apache WordPress 3.9",
+      "image": "dockunit/php-fpm-mysql-phpunit:5.6",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test3 root '' localhost 3.9"
@@ -124,7 +124,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.5:
 }
 ```
 
-[tlovett1/php-5.2-phpunit-3.5](https://registry.hub.docker.com/u/tlovett1/php-5.2-phpunit-3.5/) and [tlovett1/php-fpm-phpunit-wp](https://registry.hub.docker.com/u/tlovett1/php-fpm-phpunit-wp/) are valid Docker images available for use in any `Dockerfile.json`.
+[dockunit/php-fpm-mysql-phpunit:5.2](https://hub.docker.com/r/dockunit/php-fpm-mysql-phpunit/) and [dockunit/php-fpm-mysql-phpunit:5.6](https://hub.docker.com/r/dockunit/php-fpm-mysql-phpunit/) are valid Docker images available for use in any `Dockerfile.json`.
 
 ### Node.js
 
