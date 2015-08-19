@@ -82,7 +82,7 @@ __*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Doc
 
 Each of your projects should have a `Dockunit.json` file in the project root. You should define your containers to fit
 your application's unique needs. Here's a few example `Dockunit.json` files for a variety of different programming languages and
-environments. Feel free to use any of our [prebuilt Docker images](https://github.com/dockunit/docker-prebuilt) in your `Dockunit.json` files or create your own.
+environments. Feel free to use any of our [prebuilt Docker images](https://hub.docker.com/r/dockunit/prebuilt-images/) in your `Dockunit.json` files or create your own.
 
 ### PHP and WordPress
 
