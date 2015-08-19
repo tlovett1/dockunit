@@ -1,4 +1,4 @@
-Dockunit [![Build Status](https://travis-ci.org/dockunit/dockunit.svg?branch=master)](https://travis-ci.org/dockunit/dockunit)
+Dockunit [![Dockunit Status](https://dockunit.io/svg/dockunit/dockunit?master)](https://dockunit.io/projects/dockunit/dockunit#master)
 ==========
 
 Containerized unit testing across any platform and programming language.
