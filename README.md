@@ -55,7 +55,7 @@ example `Dockunit.json`:
 `containers` contains an array of container objects. Each container object can contain the following properties:
 
 * `prettyName` (required) - This is used in output to help you identify your container.
-* `image` (required) - This is a valid Docker container image located in the [Docker registry](https://registry.hub.docker.com/).
+* `image` (required) - This is a valid Docker container image located in the [Docker registry](https://registry.hub.docker.com/). We have a number of handy [prebuilt Docker images](https://github.com/dockunit/docker-prebuilt) for use in your `Dockunit.json` files.
 * `beforeScripts` (optional) - This is a string array of bash scripts to be run in order.
 * `testCommand` (required) - This is the actual test command to be run on each container i.e. phpunit or qunit.
 
@@ -82,7 +82,7 @@ __*You can simply run `dockunit` in any folder with a `Dockunit.json` to run Doc
 
 Each of your projects should have a `Dockunit.json` file in the project root. You should define your containers to fit
 your application's unique needs. Here's a few example `Dockunit.json` files for a variety of different programming languages and
-environments.
+environments. Feel free to use any of our [prebuilt Docker images](https://github.com/dockunit/docker-prebuilt) in your `Dockunit.json` files or create your own.
 
 ### PHP and WordPress
 
@@ -95,7 +95,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
   "containers": [
     {
       "prettyName": "PHP 5.2 FPM WordPress 4.1",
-      "image": "dockunit/php-fpm-mysql-phpunit:5.2",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-5.2-fpm",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test root '' localhost 4.1"
@@ -104,7 +104,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
     },
     {
       "prettyName": "PHP 5.6 FPM WordPress 4.0",
-      "image": "dockunit/php-fpm-mysql-phpunit:5.6",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test2 root '' localhost 4.0"
@@ -113,7 +113,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
     },
     {
       "prettyName": "PHP 5.6 for Apache WordPress 3.9",
-      "image": "dockunit/php-fpm-mysql-phpunit:5.6",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test3 root '' localhost 3.9"
@@ -124,7 +124,7 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
 }
 ```
 
-[dockunit/php-fpm-mysql-phpunit:5.2](https://hub.docker.com/r/dockunit/php-fpm-mysql-phpunit/) and [dockunit/php-fpm-mysql-phpunit:5.6](https://hub.docker.com/r/dockunit/php-fpm-mysql-phpunit/) are valid Docker images available for use in any `Dockerfile.json`.
+[dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images/) and [dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images) are valid Docker images available for use in any `Dockerfile.json`.
 
 ### Node.js
 

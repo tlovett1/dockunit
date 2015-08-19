@@ -8,15 +8,6 @@
 				"npm install -g mocha"
 			],
 			"testCommand": "mocha"
-		},
-		{
-			"prettyName": "Node 0.12",
-			"image": "tlovett1/nodejs:0.12",
-			"beforeScripts": [
-				"npm install",
-				"npm install -g mocha"
-			],
-			"testCommand": "mocha"
 		}
 	]
 }
