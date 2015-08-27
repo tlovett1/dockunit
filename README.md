@@ -124,7 +124,7 @@ can use to test your WordPress themes and plugins in PHP 5.2, 5.6, and PHP 7.0 R
 }
 ```
 
-[dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images/) and [dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images) are valid Docker images available for use in any `Dockerfile.json`.
+[dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images/), [dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm](https://hub.docker.com/r/dockunit/prebuilt-images), and [dockunit/prebuilt-images:php-mysql-phpunit-7.0-rc-1-fpm](https://hub.docker.com/r/dockunit/prebuilt-images) are valid Docker images available for use in any `Dockerfile.json`.
 
 ### Node.js
 
