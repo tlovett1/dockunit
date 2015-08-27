@@ -88,7 +88,7 @@ environments. Feel free to use any of our [prebuilt Docker images](https://hub.d
 
 Dockunit and WordPress work well together. WordPress is backwards compatible with PHP 5.2. It's very difficult to test
 applications on PHP 5.2 without some sort of containerized workflow. Here is an example `Dockunit.json` file that you
-can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
+can use to test your WordPress themes and plugins in PHP 5.2, 5.6, and PHP 7.0 RC 1:
 
 ```javascript
 {
@@ -112,8 +112,8 @@ can use to test your WordPress themes and plugins in PHP 5.2 and 5.6:
       "testCommand": "phpunit"
     },
     {
-      "prettyName": "PHP 5.6 for Apache WordPress 3.9",
-      "image": "dockunit/prebuilt-images:php-mysql-phpunit-5.6-fpm",
+      "prettyName": "PHP 7.0 RC-1",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-7.0-rc-1-fpm",
       "beforeScripts": [
         "service mysql start",
         "bash bin/install-wp-tests.sh wordpress_test3 root '' localhost 3.9"
