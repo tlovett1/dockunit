@@ -88,7 +88,97 @@ environments. Feel free to use any of our [prebuilt Docker images](https://hub.d
 
 Dockunit and WordPress work well together. WordPress is backwards compatible with PHP 5.2. It's very difficult to test
 applications on PHP 5.2 without some sort of containerized workflow. Here is an example `Dockunit.json` file that you
-can use to test your WordPress themes and plugins in PHP 5.2, 5.6, and PHP 7.0 RC 1:
+can use to test your WordPress plugins in PHP 5.2, 5.6, and PHP 7.0 RC 1 (make sure to replace `PLUGIN-FILE.php` with your plugins main file):
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "PHP-FPM 5.2 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-5.2-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp-install latest"
+      ],
+      "testCommand": "wp-activate-plugin PLUGIN-FILE.php"
+    },
+    {
+      "prettyName": "PHP-FPM 5.6 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-5.6-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp core download --path=/temp/wp --allow-root",
+        "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
+        "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
+        "mkdir /temp/wp/wp-content/plugins/test",
+        "cp -r * /temp/wp/wp-content/plugins/test"
+      ],
+      "testCommand": "wp plugin activate test --allow-root --path=/temp/wp"
+    },
+    {
+      "prettyName": "PHP-FPM 7.0 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-7.0-rc-1-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp core download --path=/temp/wp --allow-root",
+        "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
+        "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
+        "mkdir /temp/wp/wp-content/plugins/test",
+        "cp -r * /temp/wp/wp-content/plugins/test"
+      ],
+      "testCommand": "wp plugin activate test --allow-root --path=/temp/wp"
+    }
+  ]
+}
+```
+
+Here is an example `Dockunit.json` file that you can use to test your WordPress themes in PHP 5.2, 5.6, and PHP 7.0 RC 1:
+
+```javascript
+{
+  "containers": [
+    {
+      "prettyName": "PHP-FPM 5.2 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-5.2-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp-install latest"
+      ],
+      "testCommand": "wp-activate-theme test"
+    },
+    {
+      "prettyName": "PHP-FPM 5.6 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-5.6-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp core download --path=/temp/wp --allow-root",
+        "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
+        "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
+        "mkdir /temp/wp/wp-content/themes/test",
+        "cp -r * /temp/wp/wp-content/themes/test"
+      ],
+      "testCommand": "wp theme activate test --allow-root --path=/temp/wp"
+    },
+    {
+      "prettyName": "PHP-FPM 7.0 WordPress Latest",
+      "image": "dockunit/prebuilt-images:php-mysql-phpunit-wordpress-7.0-rc-1-fpm",
+      "beforeScripts": [
+        "service mysql start",
+        "wp core download --path=/temp/wp --allow-root",
+        "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
+        "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
+        "mkdir /temp/wp/wp-content/themes/test",
+        "cp -r * /temp/wp/wp-content/themes/test"
+      ],
+      "testCommand": "wp theme activate test --allow-root --path=/temp/wp"
+    }
+  ]
+}
+```
+
+### PHP and WordPress Unit Tests
+
+Here are some more advanced WordPress examples. That assume you have unit tests setup via [WP-CLI](https://github.com/wp-cli/wp-cli/wiki/Plugin-Unit-Tests).
 
 ```javascript
 {
