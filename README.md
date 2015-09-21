@@ -111,7 +111,7 @@ can use to test your WordPress plugins in PHP 5.2, 5.6, and PHP 7.0 RC 1 (make s
         "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
         "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
         "mkdir /temp/wp/wp-content/plugins/test",
-        "cp -r * /temp/wp/wp-content/plugins/test"
+        "cp -r . /temp/wp/wp-content/plugins/test"
       ],
       "testCommand": "wp plugin activate test --allow-root --path=/temp/wp"
     },
@@ -124,7 +124,7 @@ can use to test your WordPress plugins in PHP 5.2, 5.6, and PHP 7.0 RC 1 (make s
         "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
         "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
         "mkdir /temp/wp/wp-content/plugins/test",
-        "cp -r * /temp/wp/wp-content/plugins/test"
+        "cp -r . /temp/wp/wp-content/plugins/test"
       ],
       "testCommand": "wp plugin activate test --allow-root --path=/temp/wp"
     }
@@ -155,7 +155,7 @@ Here is an example `Dockunit.json` file that you can use to test your WordPress 
         "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
         "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
         "mkdir /temp/wp/wp-content/themes/test",
-        "cp -r * /temp/wp/wp-content/themes/test"
+        "cp -r . /temp/wp/wp-content/themes/test"
       ],
       "testCommand": "wp theme activate test --allow-root --path=/temp/wp"
     },
@@ -168,7 +168,7 @@ Here is an example `Dockunit.json` file that you can use to test your WordPress 
         "wp core config --path=/temp/wp --dbname=test --dbuser=root --allow-root",
         "wp core install --url=http://localhost --title=Test --admin_user=admin --admin_password=12345 --admin_email=test@test.com --path=/temp/wp --allow-root",
         "mkdir /temp/wp/wp-content/themes/test",
-        "cp -r * /temp/wp/wp-content/themes/test"
+        "cp -r . /temp/wp/wp-content/themes/test"
       ],
       "testCommand": "wp theme activate test --allow-root --path=/temp/wp"
     }
