@@ -232,19 +232,32 @@ describe('container', function() {
 		it('Test unsuccessful before script', function(done) {
 			var json = require('./json/simple-1.json').containers[0];
 
-			process.exit = oldExit;
+			var container = new Container(json);
+
+			mySpawn.setDefault(mySpawn.simple(1));
+
+			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function(code) {
+				if (1 === code) {
+					done();
+				}
+			});
+		});
+
+		/**
+		 * Test a simple unsuccessful before scripts
+		 */
+		it('Test unsuccessful before scripts', function(done) {
+			var json = require('./json/simple-1.json').containers[0];
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
+			var child = container.runBeforeScripts({}, 'e534rwdfs', function(code, index) {
+				assert.equal(1, index); // Only one before script ran
 
-			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() { });
+				done();
+			});
 		});
 	});
 
