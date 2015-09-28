@@ -303,19 +303,15 @@ describe('container', function() {
 		it('Test test error', function(done) {
 			var json = require('./json/simple-1.json').containers[0];
 
-			process.exit = oldExit;
-
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(255));
 
-			process.exit = function(code) {
+			var child = container.runTests({}, 'e534rwdfs', function(code) {
 				if (code > 1) {
 					done();
 				}
-			};
-
-			var child = container.runTests({}, 'e534rwdfs', function() { });
+			});
 		});
 	});
 });
