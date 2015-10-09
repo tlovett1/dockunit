@@ -2,7 +2,7 @@
 	"containers": [
 		{
 			"prettyName": "Node 0.10.x",
-			"image": "google/nodejs:latest",
+			"image": "node:latest",
 			"beforeScripts": [
 				"npm install",
 				"npm install -g mocha"
