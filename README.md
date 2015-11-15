@@ -69,7 +69,7 @@ _Note:_ `sudo` is usually required when run within a Linux distribution since Do
 
 * `<path-to-project-directory>` (optional) - If you run `dockunit` in a folder with a `Dockunit.json` folder, it will detect it
 automatically.
-* `[--du-verbose]` (optional) - This will print out verbose Dockunit output.
+* `[--du-verbose]` (optional) - This will print out light verbose Dockunit output. `[--du-verbose=2]` will output even more verbose Dockunit output.
 * `[--du-container]` (optional) - Run only one container in your `Dockunit.json` file by specifying the index of that container in the `containers` array .i.e `--du-container=1`.
 * `[--help]` (optional) - This will display usage information for the `dockunit` command.
 * `[--version]` (optional) - This will display the current installed version of Dockunit.
