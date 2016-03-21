@@ -9,8 +9,10 @@
   "author": "Dockunit.io (http://dockunit.io)",
   "license": "GPLv2+",
   "dependencies": {
+    "async": "^2.0.0-rc.1",
     "colors": "^1.0.3",
-    "minimist": "^1.1.0"
+    "minimist": "^1.1.0",
+    "rouster": "0.0.5"
   },
   "keywords": [
     "docker",
