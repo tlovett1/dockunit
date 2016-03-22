@@ -35,10 +35,12 @@ example `Dockunit.json`:
 
 ```javascript
 {
+  "containerLimit": 1, // Defaults to 1
   "containers": [
     {
       "prettyName": "PHP 5.2 on Ubuntu",
       "image": "user/my-php-image",
+      "shellCommand": "/bin/bash", // Defaults to /bin/bash, needed for images like Alpine
       "beforeScripts": [],
       "testCommand": "phpunit"
     },
@@ -47,6 +49,16 @@ example `Dockunit.json`:
       "image": "user/my-php-image2",
       "beforeScripts": [],
       "testCommand": "phpunit"
+    },
+    {
+      "prettyName": "Server on Apline Node.js 5.9.0",
+      "image": "mhart/alpine-node:5.9.0",
+      "shellCommand": "/bin/ash",
+      "beforeScripts": [
+        "rm -rf node_modules/",
+        "npm install"
+      ],
+      "testCommand": "npm test"
     }
   ]
 }
@@ -239,6 +251,16 @@ an application in Node.js 0.10.x and 0.12.0 using [mocha](http://mochajs.org/):
         "npm install -g mocha"
       ],
       "testCommand": "mocha"
+    },
+    {
+      "prettyName": "Apline Node.js 5.9.0",
+      "image": "mhart/alpine-node:5.9.0",
+      "shellCommand": "/bin/ash",
+      "beforeScripts": [
+        "rm -rf node_modules/",
+        "npm install"
+      ],
+      "testCommand": "npm test"
     }
   ]
 }

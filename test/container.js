@@ -4,17 +4,18 @@
 
 var proxyquire = require('proxyquire');
 var assert = require('assert');
-var mockSpawn = require('mock-spawn');
+//var mockSpawn = require('mock-spawn');
 var command = require('../lib/command');
 
-var mySpawn = mockSpawn();
+//var mySpawn = mockSpawn();
 
 /**
  * Mock the spawn dependency
  *
  * @type {container|exports.container}
  */
-var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn } }).container;
+//var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn } }).container;
+var Container = require('../lib/container').container;
 
 /**
  * Mock config
@@ -35,9 +36,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.pullImage({}, function() {
+            var child = container.pullImage(function() {
                 done();
             });
         });
@@ -50,14 +51,14 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(1));
+            //mySpawn.setDefault(mySpawn.simple(1));
 
             process.exit = function(code) {
-                if (1 === code) {
+                if (code === 1) {
                     done();
                 }
             };
-            container.pullImage({}, function() {});
+            container.pullImage(function() {});
         });
 
     });
@@ -74,9 +75,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0, '24fdgw543ys25'));
+            //mySpawn.setDefault(mySpawn.simple(0, '24fdgw543ys25'));
 
-            var child = container.startAndMountContainer({}, function() {
+            var child = container.startAndMountContainer(function() {
                 done();
             });
         });
@@ -91,15 +92,15 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
             process.exit = function(code) {
-                if (1 === code) {
+                if (code === 1) {
                     done();
                 }
             };
 
-            var child = container.startAndMountContainer({}, function() { });
+            var child = container.startAndMountContainer(function() { });
         });
 
         /**
@@ -112,15 +113,15 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(1));
+            //mySpawn.setDefault(mySpawn.simple(1));
 
             process.exit = function(code) {
-                if (1 === code) {
+                if (code === 1) {
                     done();
                 }
             };
 
-            var child = container.startAndMountContainer({}, function() { });
+            var child = container.startAndMountContainer(function() { });
         });
     });
 
@@ -136,9 +137,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.stopContainer({}, 'e534rwdfs', function() {
+            var child = container.stopContainer(function() {
                 done();
             });
         });
@@ -156,9 +157,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.removeContainer({}, 'e534rwdfs', function() {
+            var child = container.removeContainer(function() {
                 done();
             });
         });
@@ -176,9 +177,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
+            var child = container.runBeforeScript(json.beforeScripts[0], function() {
                 done();
             });
         });
@@ -191,10 +192,10 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(1));
+            //mySpawn.setDefault(mySpawn.simple(1));
 
-            var child = container.runBeforeScript({}, 0, 'e534rwdfs', function(code) {
-                if (1 === code) {
+            var child = container.runBeforeScript(json.beforeScripts[0], function(err) {
+                if (err) {
                     done();
                 }
             });
@@ -208,12 +209,12 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(1));
+            //mySpawn.setDefault(mySpawn.simple(1));
 
-            var child = container.runBeforeScripts({}, 'e534rwdfs', function(code, index) {
-                assert.equal(1, index); // Only one before script ran
-
-                done();
+            var child = container.runBeforeScripts(function(err) {
+                if(err){
+                    done();
+                }
             });
         });
     });
@@ -230,9 +231,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
+            var child = container.runBeforeScript(json.beforeScripts[0], function() {
                 done();
             });
         });
@@ -247,9 +248,9 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(0));
+            //mySpawn.setDefault(mySpawn.simple(0));
 
-            var child = container.runTests({}, 'e534rwdfs', function() {
+            var child = container.runTests(function() {
                 done();
             });
         });
@@ -262,10 +263,10 @@ describe('container', function() {
 
             var container = new Container(json);
 
-            mySpawn.setDefault(mySpawn.simple(255));
+            //mySpawn.setDefault(mySpawn.simple(255));
 
-            var child = container.runTests({}, 'e534rwdfs', function(code) {
-                if (code > 1) {
+            var child = container.runTests(function(err) {
+                if (err && (err.toString() === 'Error: Not connected')) {
                     done();
                 }
             });
