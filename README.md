@@ -1,4 +1,4 @@
-Dockunit [![Dockunit Status](https://dockunit.io/svg/dockunit/dockunit?master)](https://dockunit.io/projects/dockunit/dockunit#master)
+Dockunit
 ==========
 
 Containerized unit testing across any platform and programming language.
