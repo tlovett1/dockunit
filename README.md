@@ -1,7 +1,16 @@
-Dockunit
-==========
+Dockunit Plus
+=============
 
 Containerized unit testing across any platform and programming language.
+
+It is a fork of https://github.com/dockunit/dockunit . It has plus features of that version:
+
+- Removed backup-cleanup process of files, which backed up files, then later deleted all of them (from the root of project) and overwrote them from backup. 
+It was not just useless, but could cause data loss if there are some errors or container was stopped while the process was running. 
+Also could be very slow...
+- Default shell is not /bin/bash, but /bin/sh
+- The shell can be specified in the `Dockunit.json`
+- Color output of Docker container (very useful e.g. with Mocha)
 
 ## Purpose
 
@@ -33,14 +42,15 @@ Dockunit relies on `Dockunit.json` files. Each of your projects should have thei
 `Dockunit.json` defines what test commands should be run on what type of containers for any given project. Here is an
 example `Dockunit.json`:
 
-```javascript
+```json
 {
   "containers": [
     {
       "prettyName": "PHP 5.2 on Ubuntu",
       "image": "user/my-php-image",
       "beforeScripts": [],
-      "testCommand": "phpunit"
+      "testCommand": "phpunit",
+      "shell": "/bin/bash"
     },
     {
       "prettyName": "PHP 5.6 FPM on Ubuntu",
@@ -58,6 +68,7 @@ example `Dockunit.json`:
 * `image` (required) - This is a valid Docker container image located in the [Docker registry](https://registry.hub.docker.com/). We have a number of handy [prebuilt Docker images](https://github.com/dockunit/docker-prebuilt) for use in your `Dockunit.json` files.
 * `beforeScripts` (optional) - This is a string array of bash scripts to be run in order.
 * `testCommand` (required) - This is the actual test command to be run on each container i.e. phpunit or qunit.
+* `shell`: (optional) - The shell of the container (defaul is /bin/sh)
 
 The Dockunit command is:
 
