@@ -1,7 +1,16 @@
-Dockunit
-==========
+Dockunit Plus
+=============
 
 Containerized unit testing across any platform and programming language.
+
+It is a fork of https://github.com/dockunit/dockunit . It has plus features of that version:
+
+- Removed backup-cleanup process of files, which backed up files, then later deleted all of them (from the root of project) and overwrote them from backup. 
+It was not just useless, but could cause data loss if there are some errors or container was stopped while the process was running. 
+Also could be very slow...
+- Default shell is not /bin/bash, but /bin/sh
+- The shell can be specified in the `Dockunit.json`
+- Color output of Docker container (very useful e.g. with Mocha)
 
 ## Purpose
 
