@@ -23,295 +23,205 @@ command.setGlobals();
 
 var oldExit = process.exit;
 
-describe('container', function() {
+describe('container', () => {
 
-	describe('#pullImage()', function() {
+	describe('#pullImage()', () => {
 
 		/**
 		 * Test a simple successful Docker image pull
 		 */
-		it('Test successful Docker image pull', function(done) {
+		it('Test successful Docker image pull', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.pullImage({}, function() {
-				done();
-			});
+			container.pullImage().then(() => done());
 		});
 
 		/**
 		 * Test a simple unsuccessful Docker pull
 		 */
-		it('Test unsuccessful Docker image pull', function(done) {
+		it('Test unsuccessful Docker image pull', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
-
-			container.pullImage({}, function() {});
+			container.pullImage().catch(() => done());
 		});
-
 	});
 
-	describe('#pullImage()', function() {
+	describe('#pullImage()', () => {
 
 		/**
 		 * Test a simple successful Docker image pull
 		 */
-		it('Test successful Docker start', function(done) {
+		it('Test successful Docker start', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0, '24fdgw543ys25'));
 
-			var child = container.startAndMountContainer({}, function() {
-				done();
-			});
+			container.startAndMountContainer().then(() => done());
 		});
 
 		/**
 		 * Test an unsuccessful Docker start where no container ID is provided
 		 */
-		it('Test unsuccessful Docker start where no container ID is provided', function(done) {
+		it('Test unsuccessful Docker start where no container ID is provided', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
-
-			var child = container.startAndMountContainer({}, function() { });
+			container.startAndMountContainer().catch(() => done());
 		});
 
 		/**
 		 * Test an unsuccessful Docker start where no container ID is provided
 		 */
-		it('Test unsuccessful Docker start the command errored', function(done) {
+		it('Test unsuccessful Docker start the command errored', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
-
-			var child = container.startAndMountContainer({}, function() { });
+			container.startAndMountContainer().catch(() => done());
 		});
 	});
 
-	describe('#stopContainer()', function() {
+	describe('#stopContainer()', () => {
 
 		/**
 		 * Test a simple successful Docker container stop
 		 */
-		it('Test successful Docker container stop', function(done) {
+		it('Test successful Docker container stop', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.stopContainer({}, 'e534rwdfs', function() {
-				done();
-			});
+			container.stopContainer('e534rwdfs').then(() => done());
 		});
 
 		/**
-		 * Test a simple successful Docker container stop
+		 * Test a simple unsuccessful Docker container stop
 		 */
-		it('Test successful Docker container stop', function(done) {
+		it('Test unsuccessful Docker container stop', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
-
-			var child = container.stopContainer({}, 'e534rwdfs', function() { });
+			container.stopContainer('e534rwdfs').catch(() => done());
 		});
 	});
 
-	describe('#removeContainer()', function() {
+	describe('#removeContainer()', () => {
 
 		/**
 		 * Test a simple successful Docker container remove
 		 */
-		it('Test successful Docker container remove', function(done) {
+		it('Test successful Docker container remove', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.removeContainer({}, 'e534rwdfs', function() {
-				done();
-			});
+			container.removeContainer('e534rwdfs').then(() => done());
 		});
 
 		/**
-		 * Test a simple successful Docker container remove
+		 * Test a simple unsuccessful Docker container remove
 		 */
-		it('Test successful Docker container remove', function(done) {
+		it('Test unsuccessful Docker container remove', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			process.exit = function(code) {
-				if (1 === code) {
-					done();
-				}
-			};
-
-			var child = container.removeContainer({}, 'e534rwdfs', function() { });
+			container.removeContainer('e534rwdfs').catch(() => done());
 		});
 	});
 
-	describe('#runBeforeScript()', function() {
+	describe('#runBeforeScript()', () => {
 
 		/**
 		 * Test a simple successful before script
 		 */
-		it('Test successful before script', function(done) {
+		it('Test successful before script', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
-				done();
-			});
+			container.runBeforeScript('e534rwdfs', json.beforeScripts[0]).then(() => done());
 		});
 
 		/**
 		 * Test a simple unsuccessful before script
 		 */
-		it('Test unsuccessful before script', function(done) {
+		it('Test unsuccessful before script', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(1));
 
-			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function(code) {
-				if (1 === code) {
-					done();
-				}
-			});
-		});
-
-		/**
-		 * Test a simple unsuccessful before scripts
-		 */
-		it('Test unsuccessful before scripts', function(done) {
-			var json = require('./json/simple-1.json').containers[0];
-
-			var container = new Container(json);
-
-			mySpawn.setDefault(mySpawn.simple(1));
-
-			var child = container.runBeforeScripts({}, 'e534rwdfs', function(code, index) {
-				assert.equal(1, index); // Only one before script ran
-
-				done();
-			});
+			container.runBeforeScript('e534rwdfs', json.beforeScripts[0]).catch(() => done());
 		});
 	});
 
-	describe('#runTests()', function() {
+	describe('#runTests()', () => {
 
 		/**
 		 * Test a simple passed tests
 		 */
-		it('Test passed tests', function(done) {
+		it('Test passed tests', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.runBeforeScript({}, 0, 'e534rwdfs', function() {
-				done();
-			});
+			container.runBeforeScript('e534rwdfs', json.beforeScripts[0]).then(() => done());
 		});
 
 		/**
 		 * Test a simple failed tests
 		 */
-		it('Test failed tests', function(done) {
+		it('Test failed tests', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
-
-			process.exit = oldExit;
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(0));
 
-			var child = container.runTests({}, 'e534rwdfs', function() {
-				done();
-			});
+			container.runTests('e534rwdfs').then(() => done());
 		});
 
 		/**
 		 * Test a simple test error
 		 */
-		it('Test test error', function(done) {
+		it('Test test error', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
 
 			var container = new Container(json);
 
 			mySpawn.setDefault(mySpawn.simple(255));
 
-			var child = container.runTests({}, 'e534rwdfs', function(code) {
-				if (code > 1) {
-					done();
-				}
-			});
+			container.runTests('e534rwdfs').catch(() => done());
 		});
 	});
 });
