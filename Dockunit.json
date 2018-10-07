@@ -1,8 +1,26 @@
 {
 	"containers": [
 		{
-			"prettyName": "Node 0.10.x",
-			"image": "node:latest",
+			"prettyName": "Node 6",
+			"image": "node:6",
+			"beforeScripts": [
+				"npm install",
+				"npm install -g mocha"
+			],
+			"testCommand": "mocha"
+		},
+		{
+			"prettyName": "Node 8",
+			"image": "node:8",
+			"beforeScripts": [
+				"npm install",
+				"npm install -g mocha"
+			],
+			"testCommand": "mocha"
+		},
+		{
+			"prettyName": "Node 10",
+			"image": "node:10",
 			"beforeScripts": [
 				"npm install",
 				"npm install -g mocha"

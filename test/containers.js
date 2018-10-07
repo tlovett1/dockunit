@@ -11,7 +11,7 @@ var mockContainer = function() { };
 /**
  * Mock the Container object
  */
-var Containers = proxyquire('../lib/containers', { './container': { container: mockContainer } }).containers;
+var Containers = proxyquire('../lib/containers', { './container': mockContainer });
 
 /**
  * Mock config
