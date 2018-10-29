@@ -9,7 +9,7 @@ var mockContainer = function() { };
 /**
  * Mock the Containers object
  */
-var Command = proxyquire('../lib/command', { './container': { container: mockContainer } });
+var Command = proxyquire('../lib/command', { './container': mockContainer });
 
 describe('command', function() {
 

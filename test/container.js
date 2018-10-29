@@ -14,7 +14,7 @@ var mySpawn = mockSpawn();
  *
  * @type {container|exports.container}
  */
-var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn } }).container;
+var Container = proxyquire('../lib/container', { child_process: { spawn: mySpawn } });
 
 /**
  * Mock config
@@ -53,11 +53,10 @@ describe('container', () => {
 			container.pullImage().catch(() => done());
 		});
 	});
-
-	describe('#pullImage()', () => {
+	describe('#startContainer()', () => {
 
 		/**
-		 * Test a simple successful Docker image pull
+		 * Test starting a Docker container
 		 */
 		it('Test successful Docker start', (done) => {
 			var json = require('./json/simple-1.json').containers[0];
