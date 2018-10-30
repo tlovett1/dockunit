@@ -124,35 +124,6 @@ describe('container', () => {
 		});
 	});
 
-	describe('#removeContainer()', () => {
-
-		/**
-		 * Test a simple successful Docker container remove
-		 */
-		it('Test successful Docker container remove', (done) => {
-			var json = require('./json/simple-1.json').containers[0];
-
-			var container = new Container(json);
-
-			mySpawn.setDefault(mySpawn.simple(0));
-
-			container.removeContainer('e534rwdfs').then(() => done());
-		});
-
-		/**
-		 * Test a simple unsuccessful Docker container remove
-		 */
-		it('Test unsuccessful Docker container remove', (done) => {
-			var json = require('./json/simple-1.json').containers[0];
-
-			var container = new Container(json);
-
-			mySpawn.setDefault(mySpawn.simple(1));
-
-			container.removeContainer('e534rwdfs').catch(() => done());
-		});
-	});
-
 	describe('#runBeforeScript()', () => {
 
 		/**
